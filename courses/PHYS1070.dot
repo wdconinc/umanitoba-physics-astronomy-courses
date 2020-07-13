@@ -1,0 +1,47 @@
+# Prerequisites:
+#  (a grade of "C" or better in PHYS 1050 or PHYS 1051) 
+#   or
+#  (a grade of "B" or better in PHYS 1020 or PHYS 1021)
+#   and
+#  (a grade of "C" or better in one of MATH 1230, MATH 1500, MATH 1501, MATH 1510, MATH 1520, or the former MATH 1530).
+# Pre- or corequisite:
+#  one of MATH 1232, MATH 1700, MATH 1701, MATH 1690, MATH 1710, or the former MATH 1730.
+# Recommended for entry into the Honours programs (with a grade of "B").
+
+digraph PHYS1070 {
+
+  graph [fontsize=10 fontname="Verdana" compound=true];
+  node [shape=box fontsize=10 fontname="Verdana"];
+
+  PHYS1070 [label="PHYS 1070 (3) \n Winter"];
+
+  PHYS1020 [label="PHYS 1020 (3) \n C or better"];
+  PHYS1021 [label="PHYS 1021 (3) \n C or better"];
+
+  PHYS1050 [label="PHYS 1050 (3) \n B or better"];
+  PHYS1051 [label="PHYS 1051 (3) \n B or better"];
+
+  MATH1232 [label="MATH 1232 (3) \n C or better"];
+  MATH1500 [label="MATH 1500 (3) \n C or better"];
+  MATH1501 [label="MATH 1501 (3) \n C or better"];
+  MATH1510 [label="MATH 1510 (3) \n C or better"];
+  MATH1520 [label="MATH 1520 (3) \n C or better"];
+  MATH1530 [label="MATH 1530 (3) \n C or better"];
+
+  subgraph cluster_PHYS1020 {
+    PHYS1020 -> PHYS1021 [color=grey arrowhead=none label="or"];
+  }
+
+  subgraph cluster_PHYS1050 {
+    PHYS1050 -> PHYS1051 [color=grey arrowhead=none label="or"];
+  }
+
+  subgraph cluster_MATH1232 {
+    MATH1232 -> MATH1500 -> MATH1501 -> MATH1510 -> MATH1520 -> MATH1530 [color=grey arrowhead=none label="or"];
+  }
+
+  PHYS1051 -> PHYS1070 [ltail=cluster_PHYS1050];
+  PHYS1021 -> PHYS1070 [ltail=cluster_PHYS1020];
+  MATH1530 -> PHYS1070 [ltail=cluster_MATH1232];
+
+}

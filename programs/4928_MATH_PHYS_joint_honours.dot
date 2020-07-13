@@ -1,0 +1,102 @@
+# http://crscalprod.ad.umanitoba.ca/~/Catalog/ViewCatalog.aspx?pageid=viewcatalog&catalogid=440&topicid=855563&topicgroupid=27357
+
+digraph 4928_MATH_PHYS {
+  graph [fontsize=10 fontname="Verdana" compound=true];
+  node [shape=box fontsize=10 fontname="Verdana"];
+
+  Year1_Fall   [shape=none label="Year 1\nFall term"];
+  Year1_Winter [shape=none label="Year 1\nWinter term"];
+  Year2_Fall   [shape=none label="Year 2\nFall term"];
+  Year2_Winter [shape=none label="Year 2\nWinter term"];
+  Year3_Fall   [shape=none label="Year 3\nFall term"];
+  Year3_Winter [shape=none label="Year 3\nWinter term"];
+  Year4_Fall   [shape=none label="Year 4\nFall term"];
+  Year4_Winter [shape=none label="Year 4\nWinter term"];
+  Year1_Fall -> Year1_Winter -> Year2_Fall -> Year2_Winter -> Year3_Fall -> Year3_Winter -> Year4_Fall -> Year4_Winter [style=invis];
+
+  # Year 1
+  # fall
+  {rank=same Year1_Fall MATH1220 STAT1150 MATH1230 PHYS1050 PHYS1020 ARTS1000_1}
+  MATH1220 [label="Linear Algebra 1\nMATH 1220 (3)\n "];
+  MATH1230 [label="Differential Calculus\nMATH 1230 (3)\nC or better"];
+  STAT1150 [label="Intro to Statistics and Computing\nSTAT 1150 (3)\n "];
+  subgraph PHYS1050_or_PHYS1020 {
+    {rank=same PHYS1050 PHYS1020}
+    PHYS1050 [label="Physics 1: Mechanics\nPHYS 1050 (3)\nB or better"]; MATH1230 -> PHYS1050 [label="co"];
+    PHYS1020 [label="General Physics 1\nPHYS 1020 (3)\nB+ or better"];
+    PHYS1050 -> PHYS1020 [color=grey arrowhead=none label="or"];
+  }
+  subgraph ARTS1000 {
+    ARTS1000_1 [label="Arts Elective\n(3)\n "];
+    ARTS1000_2 [label="Arts Elective\n(3)\n(W course)"];
+    ARTS1000_1 -> ARTS1000_2 [color=grey dir=both];
+  }
+  # winter
+  {rank=same Year1_Winter MATH1232 MATH1240 PHYS1070 PHYS1030 ARTS1000_2}
+  MATH1232 [label="Integral Calculus\nMATH 1232 (3)\nB or better"]; MATH1230 -> MATH1232;
+  MATH1240 [label="Elementary Discrete Math\nMATH 1240 (3)\n "];
+  subgraph PHYS1070_or_PHYS1030 {
+    {rank=same PHYS1070 PHYS1030}
+    PHYS1070 [label="Physics 2: Waves and Modern Physics\nPHYS 1070 (3)\nB or better"]; PHYS1050 -> PHYS1070;
+    PHYS1030 [label="General Physics 2\nPHYS 1030 (3)\nB+ or better"]; PHYS1050 -> PHYS1030; PHYS1020 -> PHYS1030;
+    PHYS1070 -> PHYS1030 [color=grey arrowhead=none label="or"];
+  }
+  COMP1012 [label="Computer Programming\nCOMP 1012 (3)\n "]; MATH1230 -> COMP1012;
+
+  # Year 2
+  MATH2020 [label="Algebra 1\nMATH 2020 (3)\n "]; MATH2090 -> MATH2020;
+  MATH2080 [label="Intro to Analysis\nMATH 2080 (3)\n "]; MATH1232 -> MATH2080; MATH1220 -> MATH2080; MATH1240 -> MATH2080;
+  MATH2090 [label="Linear Algebra 2\nMATH 2090 (3)\n "]; MATH1220 -> MATH2090;
+  MATH2150 [label="Multivariable Calculus\nMATH 2150 (3)\n "]; MATH2080 -> MATH2150;
+  MATH2180 [label="Real Analysis\nMATH 2180 (3)\n "]; MATH2080 -> MATH2180
+  subgraph PHYS2260_or_PHYS2610 {
+    PHYS2260 [label="Optics\nPHYS 2260 (3)\n "]; PHYS1070 -> PHYS2260
+    PHYS2610 [label="Electronics\nPHYS 2610 (3)\n "]; PHYS2600 -> PHYS2610
+    {rank=same PHYS2260 PHYS2610}
+    PHYS2260 -> PHYS2610 [color=grey arrowhead=none label="or"];
+  }
+  PHYS2386 [label="Intro to Quantum Mechanics\nPHYS 2600 (3)\n "];
+  PHYS2600 [label="Electromagnetic Theory\nPHYS 2600 (3)\n "]; PHYS1070 -> PHYS2600 [label="C"]; PHYS1030 -> PHYS2600 [label="C+"]; MATH2080 -> PHYS2600
+  PHYS2650 [label="Classical Mechanics 1\nPHYS 2650 (3)\n "]; PHYS1070 -> PHYS2650 [label="C"]; PHYS1030 -> PHYS2650 [label="C+"];
+  subgraph PHYS2000 {
+    PHYS2000_1 [label="Physics Elective\n(3)\n " color=gray fontcolor=white];
+    PHYS2000_2 [label="Physics Elective\n(3)\n "];
+    PHYS2000_1 -> PHYS2000_2 [color=grey dir=both];
+  }
+  # fall
+  {rank=same Year2_Fall MATH2090 MATH2080 MATH2090 PHYS2260 PHYS2610 PHYS2000_1}
+  # winter
+  {rank=same Year2_Winter MATH2020 MATH2150 MATH2180 PHYS2386 PHYS2600 PHYS2650 PHYS2000_2}
+  
+  # Year 3
+  MATH3340; MATH2180 -> MATH3340; MATH2150 -> MATH3340;
+  MATH3440; MATH3470 -> MATH3440;
+  MATH3460; MATH2150 -> MATH3460; MATH3440 -> MATH3460;
+  MATH3470; MATH2150 -> MATH3470; MATH2180 -> MATH3470;
+  MATH3472; MATH2180 -> MATH3472;
+  PHYS3670; PHYS2600 -> PHYS3670;
+  PHYS3650; PHYS2650 -> PHYS3650;
+  PHYS3630; 
+  PHYS3386; PHYS2386 -> PHYS3386;
+  PHYS3000 [label="PHYS elective (3)\n3000/4000-level"];
+  # fall
+  {rank=same Year3_Fall MATH3340 MATH3470 PHYS3650 PHYS3670}
+  # winter
+  {rank=same Year3_Winter PHYS3630 PHYS3386 PHYS3000}
+
+  # Year 4
+  MATH3320; MATH2020 -> MATH3320;
+  MATH3322; MATH3320 -> MATH3322;
+  MATH4000 [label="MATH elective (3)\n4000-level"];
+  PHYS3430_1; PHYS2260 -> PHYS3430_1;
+  PHYS3430_2; PHYS3430_1 -> PHYS3430_2;
+  PHYS4680; PHYS2386 -> PHYS4680; PHYS3670 -> PHYS4680;
+  PHYS4000_1;
+  PHYS4000_2;
+  ELEC4000_1;
+  ELEC4000_2;
+  # fall
+  {rank=same Year4_Fall MATH3320 PHYS3430_1 PHYS4000_1 ELEC4000_1}
+  # winter
+  {rank=same Year4_Winter MATH3322 MATH4000 PHYS3430_2 PHYS4680 PHYS4000_2 ELEC4000_2}
+}

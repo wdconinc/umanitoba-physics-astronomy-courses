@@ -1,6 +1,6 @@
 # http://crscalprod.ad.umanitoba.ca/~/Catalog/ViewCatalog.aspx?pageid=viewcatalog&catalogid=440&topicid=855563&topicgroupid=27357
 
-digraph 4928_MATH_PHYS {
+digraph PHYS4928 {
   graph [fontsize=10 fontname="Verdana" compound=true];
   node [shape=box fontsize=10 fontname="Verdana"];
 
